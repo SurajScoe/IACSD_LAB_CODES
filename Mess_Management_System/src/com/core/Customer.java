@@ -21,37 +21,39 @@ public class Customer {
 	private plan pln;
 	private double f_amt;
 	private static int counterId;
-	
+
 	static {
-		counterId=100;
+		counterId = 100;
 	}
-	
+
 	public Customer(String fname, String lname, String email, String pass, String address, LocalDate regdate,
-			 String phoneno, plan pln, double f_amt) {
+			String phoneno, plan pln, double f_amt) {
 		super();
-		this.custId=counterId++;
+		this.custId = counterId++;
 		this.fname = fname;
 		this.lname = lname;
 		this.email = email;
 		this.pass = pass;
 		this.address = address;
 		this.regdate = regdate;
-		/*registration date can be only todays date or after todays date and end date
- must be depend on plan selected e.g if user reg date is 11/10/2023 and 
- selected plan is of 1 year then end date set automatically as 11/12/2024*/
-		if(plan.MONTHLY==pln)
-		this.planEnddate = regdate.plusMonths(1);
-		else if(plan.YEARLY==pln)
-		this.planEnddate = regdate.plusMonths(12);
-		else if(plan.HALFYEAR==pln)
-		this.planEnddate = regdate.plusMonths(6);
-		else if(plan.QUARTERLY==pln)
-		this.planEnddate = regdate.plusMonths(3);
+		/*
+		 * registration date can be only todays date or after todays date and end date
+		 * must be depend on plan selected e.g if user reg date is 11/10/2023 and
+		 * selected plan is of 1 year then end date set automatically as 11/12/2024
+		 */
+		if (plan.MONTHLY == pln)
+			this.planEnddate = regdate.plusMonths(1);
+		else if (plan.YEARLY == pln)
+			this.planEnddate = regdate.plusMonths(12);
+		else if (plan.HALFYEAR == pln)
+			this.planEnddate = regdate.plusMonths(6);
+		else if (plan.QUARTERLY == pln)
+			this.planEnddate = regdate.plusMonths(3);
 		this.phoneno = phoneno;
 		this.pln = pln;
 		this.f_amt = f_amt;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Customer [custId=" + custId + ", fname=" + fname + ", lname=" + lname + ", email=" + email + ", pass="
@@ -60,9 +62,9 @@ public class Customer {
 	}
 
 	public void setId(int custId) {
-		this.custId=custId;
+		this.custId = custId;
 	}
-	
+
 	public int getId() {
 		return custId;
 	}
@@ -146,16 +148,14 @@ public class Customer {
 	public void setF_amt(double f_amt) {
 		this.f_amt = f_amt;
 	}
-	
+
 	@Override
 	public boolean equals(Object o) {
-		if(o instanceof Customer) {
-			//downCasting done here
-			return this.email.equals(((Customer)o).getEmail());
-		}else
-		return false;
+		if (o instanceof Customer) {
+			// downCasting done here
+			return this.email.equals(((Customer) o).getEmail());
+		} else
+			return false;
 	}
-	
-	
-	
+
 }

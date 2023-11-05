@@ -8,26 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.core.Customer;
+
 // De-serialization (Restore)(Hint:-JAVA App<-OIS<-FIS)
 public class Restore {
-	public static List<Customer> restoredate(String filename){
-		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))){
-			//So down cast here in deserilization
+	public static List<Customer> restoredate(String filename) {
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+			// So down cast here in deserilization
 			List<Customer> list = new ArrayList<>();
-			list=(List<Customer>)in.readObject();
+			list = (List<Customer>) in.readObject();
 			return list;
-		}
-		catch(FileNotFoundException e) {
+		} catch (FileNotFoundException e) {
 			System.out.println(e);
 			e.printStackTrace();
 			return new ArrayList<>();
-		}
-		catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println(e);
 			e.printStackTrace();
 			return new ArrayList<>();
-		}
-		catch(ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return new ArrayList<>();
 		}
